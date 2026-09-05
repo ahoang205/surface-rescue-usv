@@ -7,7 +7,6 @@
 [![Status: Tested in Field](https://img.shields.io/badge/Status-Field%20Tested%20%26%20Verified-brightgreen.svg)]()
 
 > **BÁO CÁO NGHIÊN CỨU & NGUỒN MỞ DỰ ÁN CƠ ĐIỆN TỬ - HỆ THỐNG USV CỨU HỘ MẶT NƯỚC**  
-> **Tác giả:** Trần Trung Hiếu, Bùi Diệu Linh (2026)  
 > **Repository:** [https://github.com/ahoang205/surface-rescue-usv](https://github.com/ahoang205/surface-rescue-usv)
 
 ---
@@ -25,10 +24,10 @@ Cấu trúc cốt lõi của robot sử dụng vi điều khiển trung tâm ESP
 ## 1. MỞ ĐẦU & TÍNH CẤP THIẾT CỦA ĐỀ TÀI
 
 ### 1.1. Thực trạng tai nạn đuối nước
-Theo Báo cáo tình hình phòng chống đuối nước toàn cầu của Tổ chức Y tế Thế giới (WHO), tai nạn đuối nước cướp đi khoảng **300.000 sinh mạng mỗi năm** trên toàn thế giới [1]. Trong đó, hơn 92% số ca tử vong xảy ra tại các quốc gia có thu nhập thấp và trung bình (LMICs), và đối tượng chịu ảnh hưởng nặng nề nhất là trẻ em và thanh thiếu niên.
+Theo Báo cáo tình hình phòng chống đuối nước toàn cầu của Tổ chức Y tế Thế giới (WHO), tai nạn đuối nước cướp đi khoảng **300.000 sinh mạng mỗi năm** trên toàn thế giới. Trong đó, hơn 92% số ca tử vong xảy ra tại các quốc gia có thu nhập thấp và trung bình (LMICs), và đối tượng chịu ảnh hưởng nặng nề nhất là trẻ em và thanh thiếu niên.
 
 ### 1.2. Giải pháp Robot Cứu hộ Mặt nước (USV)
-Trong các sự cố tai nạn sông nước, "thời gian vàng" để hỗ trợ nạn nhân chỉ kéo dài trong vài phút trước khi nạn nhân bị kiệt sức. Cứu hộ thủ công bơi trực tiếp đòi hỏi thể lực tốt và tiềm ẩn nguy hiểm cho chính người cứu nạn. Việc ứng dụng **phương tiện mặt nước không người lái (USV)** di chuyển tốc độ cao để mang phao cứu sinh tới vị trí nạn nhân là giải pháp hỗ trợ khẩn cấp mang tính khả thi và an toàn cao [2, 3].
+Trong các sự cố tai nạn sông nước, "thời gian vàng" để hỗ trợ nạn nhân chỉ kéo dài trong vài phút trước khi nạn nhân bị kiệt sức. Cứu hộ thủ công bơi trực tiếp đòi hỏi thể lực tốt và tiềm ẩn nguy hiểm cho chính người cứu nạn. Việc ứng dụng **phương tiện mặt nước không người lái (USV)** di chuyển tốc độ cao để mang phao cứu sinh tới vị trí nạn nhân là giải pháp hỗ trợ khẩn cấp mang tính khả thi và an toàn cao.
 
 ### 1.3. Mục tiêu nghiên cứu
 1. Chế tạo khung phao đôi Catamaran từ nhựa PVC giá thành tối ưu, có độ nổi dự trữ lớn (~75%) và tự cân bằng tĩnh tốt trên mặt nước.
@@ -199,14 +198,3 @@ surface-rescue-usv/
 3. Nạp `firmware/transmitter_tx/transmitter_tx.ino` cho ESP32 phía Tay điều khiển.
 4. Nạp `firmware/receiver_usv_rx/receiver_usv_rx.ino` cho ESP32 phía Robot.
 5. **Quy trình bật nguồn:** Bật nguồn Tay điều khiển trước -> Cắm pin LiPo cho Robot -> Chờ ESC phát tiếng bíp ngắt lệnh khởi động -> Thao tác Joystick để điều khiển robot.
-
----
-
-## 📄 TÀI LIỆU THAM KHẢO (REFERENCES)
-
-[1] World Health Organization (WHO), *Global status report on drowning prevention 2024*, Geneva: World Health Organization, 2024.  
-[2] H. M. Tran, V. H. Nguyen, and T. A. Le, "Design and Control of an Unmanned Surface Vehicle for Water Quality Monitoring and Search-and-Rescue Operations," *IEEE Access*, vol. 11, pp. 45210–45222, 2023.  
-[3] A. Bonfitto and N. Amati, "Model-based Control Design for Unmanned Surface Vehicles in Search and Rescue Scenarios," *Ocean Engineering*, vol. 268, p. 113420, 2023.  
-[4] Y. Zhang, W. Liu, and X. Chen, "Path Planning and Control of USV for Emergency Water Rescue in Complex Environments," *Journal of Marine Science and Engineering*, vol. 12, no. 3, p. 412, 2024.  
-[5] Espressif Systems, *ESP32 Series Datasheet v4.2*, Espressif Systems Co., Ltd., 2024.  
-[6] Nordic Semiconductor, *nRF24L01+ Single Chip 2.4GHz Transceiver Product Specification v1.0*, Nordic Semiconductor ASA, 2023.
