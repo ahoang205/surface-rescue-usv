@@ -71,23 +71,33 @@ Hệ thống gồm 2 phân hệ: **Tay điều khiển cầm tay (TX)** và **Ro
 
 ### 2.3. Tính toán Động lực học Nổi & Cân bằng
 
-#### Tính toán lực đẩy Archimedes lý thuyết cực đại:
-Phao đôi Catamaran sử dụng 2 ống PVC đường kính ngoài **D = 0,09 m** (90 mm), chiều dài mỗi ống **L = 1,0 m**.  
-Thể tích chiếm chỗ ngoài 1 mét ống:
-* **V_1m = π × (D² / 4) × 1,0 = 3,14159 × (0,09² / 4) × 1,0 ≈ 0,00636 m³**
+#### a) Tính toán lực đẩy Archimedes lý thuyết cực đại:
+Phao đôi Catamaran sử dụng 2 ống nhựa PVC đường kính ngoài **D = 0,09 m** (90 mm), chiều dài mỗi ống **L = 1,0 m**.
 
-Lực đẩy Archimedes cực đại trên mỗi mét ống khi ngập hoàn toàn trong nước (khối lượng riêng ρ = 1000 kg/m³, gia tốc trọng trường g = 9,81 m/s²):
-* **F_(A,max/m) = ρ × g × V_1m = 1000 × 9,81 × 0,00636 ≈ 62,4 N/m**
+```text
+1. Thể tích chiếm chỗ ngoài của 1 mét ống:
+   V_1m = π × (D² / 4) × 1,0 = 3,14159 × (0,09² / 4) × 1,0 ≈ 0,00636 m³
 
-Tổng lực nổi cực đại của hệ phao đôi (tổng chiều dài 2,0 m ống PVC):
-* **F_(A,total) = 2 × 62,4 N/m = 124,8 N (tương đương ~12,7 kgf)**
+2. Lực đẩy Archimedes cực đại trên 1 mét ống khi ngập hoàn toàn:
+   F_(A,max/m) = ρ × g × V_1m = 1000 kg/m³ × 9,81 m/s² × 0,00636 m³ ≈ 62,4 N/m
 
-#### Tính toán độ nổi dự trữ và mớn nước tĩnh:
-Khối lượng toàn bộ robot khi lắp hoàn chỉnh **m = 3,25 kg** (trọng lượng tổng **P = m × g = 3,25 × 9,81 = 31,88 N**).  
-Độ nổi dự trữ **R_b** của robot:
-* **R_b = [(F_(A,total) - P) / F_(A,total)] × 100% = [(124,8 - 31,88) / 124,8] × 100% ≈ 74,45%**
+3. Tổng lực nổi cực đại của hệ phao đôi (tổng chiều dài 2,0 m ống PVC):
+   F_(A,total) = 2 × 62,4 N/m = 124,8 N  (tương đương ~12,7 kgf)
+```
+
+#### b) Tính toán độ nổi dự trữ và mớn nước tĩnh:
+Khối lượng toàn bộ robot khi lắp hoàn chỉnh **m = 3,25 kg** (trọng lượng tổng **P = m × g = 3,25 kg × 9,81 m/s² = 31,88 N**).
+
+```text
+Độ nổi dự trữ R_b của robot:
+R_b = [(F_(A,total) - P) / F_(A,total)] × 100%
+    = [(124,8 - 31,88) / 124,8] × 100% ≈ 74,45%
+```
 
 Tỉ lệ nổi dự trữ cao (~74,5%) giữ mớn nước tĩnh (Draft) ở mức 45 mm (25% chiều cao phao), giúp bo mạch điều khiển và pin luôn khô ráo và cách xa mặt nước 150 mm.
+
+#### c) Phân tích tính tự cân bằng tĩnh (CG - CB):
+Do khối pin LiPo nặng nhất và hai động cơ chìm được bố trí dưới đáy khoang phao, Trọng tâm của toàn hệ thống (Center of Gravity - CG) nằm thấp hơn đáng kể so với Tâm nổi tĩnh (Center of Buoyancy - CB). Khoảng cách CG - CB dương kết hợp với khoảng cách rộng giữa hai thân phao (350 mm) tạo nên tay đòn đung đung phục hồi lớn, đảm bảo tính tự cân bằng tĩnh, chống lật ngang/lật dọc tốt khi gặp sóng nhỏ trên mặt nước tĩnh.
 
 ---
 
