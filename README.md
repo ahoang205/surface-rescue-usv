@@ -16,7 +16,7 @@
 
 Báo cáo trình bày chi tiết nghiên cứu thiết kế, chế tạo và thử nghiệm thực địa mô hình robot cứu hộ mặt nước điều khiển từ xa dạng phương tiện mặt nước không người lái (Unmanned Surface Vehicle - USV). Hệ thống được định hướng cho nhiệm vụ di chuyển tiếp cận nhanh nạn nhân gặp sự cố đuối nước trên mặt nước tĩnh (hồ, ao, sông nhỏ) và vận chuyển phao cứu sinh trợ nổi khẩn cấp, giúp kéo dài thời gian sống sót của nạn nhân trước khi lực lượng cứu hộ tới nơi. 
 
-Cấu trúc cốt lõi của robot sử dụng vi điều khiển trung tâm ESP32 kết hợp với module truyền nhận sóng vô tuyến tầm xa nRF24L01+ PA/LNA hoạt động ở dải tần 2,4 GHz theo phương thức điều chế GFSK. Thân vỏ robot dạng phao đôi Catamaran được thiết chế từ 2 ống nhựa PVC 90 mm, đạt tổng lực nổi cực đại 124,8 N và độ nổi dự trữ lớn (~74,5%), đảm bảo khả năng tự cân bằng tĩnh ổn định với trọng tâm thấp. Động cơ đẩy chìm không chổi than (Brushless Thruster) chuẩn kháng nước IP68 kết hợp với bộ điều tốc ESC 30A cho phép robot đạt tốc độ di chuyển tối đa 1,8 m/s (~6,5 km/h) và lực kéo phao $2{,}5\text{ kgf}$. Thử nghiệm thực tế tại hồ nước tĩnh khẳng định cự ly điều khiển tin cậy tầm nhìn thẳng (LOS) đạt 165 m với tỉ lệ rớt gói tin $< 3\%$, thời gian vận hành liên tục 28,5 phút với khối pin LiPo 4S 4500 mAh.
+Cấu trúc cốt lõi của robot sử dụng vi điều khiển trung tâm ESP32 kết hợp với module truyền nhận sóng vô tuyến tầm xa nRF24L01+ PA/LNA hoạt động ở dải tần 2,4 GHz theo phương thức điều chế GFSK. Thân vỏ robot dạng phao đôi Catamaran được thiết chế từ 2 ống nhựa PVC 90 mm, đạt tổng lực nổi cực đại 124,8 N và độ nổi dự trữ lớn (~74,5%), đảm bảo khả năng tự cân bằng tĩnh ổn định với trọng tâm thấp. Động cơ đẩy chìm không chổi than (Brushless Thruster) chuẩn kháng nước IP68 kết hợp với bộ điều tốc ESC 30A cho phép robot đạt tốc độ di chuyển tối đa 1,8 m/s (~6,5 km/h) và lực kéo phao 2,5 kgf. Thử nghiệm thực tế tại hồ nước tĩnh khẳng định cự ly điều khiển tin cậy tầm nhìn thẳng (LOS) đạt 165 m với tỉ lệ rớt gói tin < 3%, thời gian vận hành liên tục 28,5 phút với khối pin LiPo 4S 4500 mAh.
 
 **Từ khóa:** *Robot cứu hộ mặt nước; Phương tiện mặt nước không người lái (USV); Điều khiển từ xa; nRF24L01+; Phao cứu sinh; ESP32.*
 
@@ -32,7 +32,7 @@ Trong các sự cố tai nạn sông nước, "thời gian vàng" để hỗ tr�
 
 ### 1.3. Mục tiêu nghiên cứu
 1. Chế tạo khung phao đôi Catamaran từ nhựa PVC giá thành tối ưu, có độ nổi dự trữ lớn (~75%) và tự cân bằng tĩnh tốt trên mặt nước.
-2. Thiết kế mạch điều khiển không dây tầm xa dựa trên ESP32 và nRF24L01+ PA/LNA (2,4 GHz GFSK), điều khiển tốc độ vi phân với độ trễ thấp ($< 35\text{ ms}$).
+2. Thiết kế mạch điều khiển không dây tầm xa dựa trên ESP32 và nRF24L01+ PA/LNA (2,4 GHz GFSK), điều khiển tốc độ vi phân với độ trễ thấp (< 35 ms).
 3. Đo đạc thử nghiệm định lượng tốc độ di chuyển, cự ly truyền thông thực tế (LOS), tỉ lệ rớt gói tin và thời gian xả pin dưới tải.
 
 ---
@@ -72,19 +72,20 @@ Hệ thống gồm 2 phân hệ: **Tay điều khiển cầm tay (TX)** và **Ro
 ### 2.3. Tính toán Động lực học Nổi & Cân bằng
 
 #### Tính toán lực đẩy Archimedes lý thuyết cực đại:
-Phao đôi Catamaran sử dụng 2 ống PVC đường kính ngoài $D = 0{,}09\text{ m}$ (90 mm), chiều dài mỗi ống $L = 1{,}0\text{ m}$. Thể tích ngoài 1 mét ống:
-\[ V_{1m} = \pi \cdot \frac{D^2}{4} \cdot 1{,}0 = \pi \cdot \frac{0{,}09^2}{4} \cdot 1{,}0 \approx 0{,}00636\text{ m}^3 \]
+Phao đôi Catamaran sử dụng 2 ống PVC đường kính ngoài **D = 0,09 m** (90 mm), chiều dài mỗi ống **L = 1,0 m**.  
+Thể tích chiếm chỗ ngoài 1 mét ống:
+* **V_1m = π × (D² / 4) × 1,0 = 3,14159 × (0,09² / 4) × 1,0 ≈ 0,00636 m³**
 
-Lực đẩy Archimedes cực đại trên mỗi mét ống khi ngập hoàn toàn trong nước ($\rho = 1000\text{ kg/m}^3$, $g = 9{,}81\text{ m/s}^2$):
-\[ F_{A,max/m} = \rho \cdot g \cdot V_{1m} = 1000 \cdot 9{,}81 \cdot 0{,}00636 \approx 62{,}4\text{ N/m} \]
+Lực đẩy Archimedes cực đại trên mỗi mét ống khi ngập hoàn toàn trong nước (khối lượng riêng ρ = 1000 kg/m³, gia tốc trọng trường g = 9,81 m/s²):
+* **F_(A,max/m) = ρ × g × V_1m = 1000 × 9,81 × 0,00636 ≈ 62,4 N/m**
 
-Tổng lực nổi cực đại của hệ phao đôi (tổng chiều dài 2,0 m ống):
-\[ F_{A,total} = 2 \cdot 62{,}4 = 124{,}8\text{ N} \quad (\approx 12{,}7\text{ kgf}) \]
+Tổng lực nổi cực đại của hệ phao đôi (tổng chiều dài 2,0 m ống PVC):
+* **F_(A,total) = 2 × 62,4 N/m = 124,8 N (tương đương ~12,7 kgf)**
 
 #### Tính toán độ nổi dự trữ và mớn nước tĩnh:
-Khối lượng toàn bộ robot khi lắp hoàn chỉnh $m = 3{,}25\text{ kg}$ (trọng lượng $P \approx 31{,}88\text{ N}$).  
-Độ nổi dự trữ $R_b$ của robot:
-\[ R_b = \frac{F_{A,total} - P}{F_{A,total}} \cdot 100\% = \frac{124{,}8 - 31{,}88}{124{,}8} \cdot 100\% \approx 74{,}45\% \]
+Khối lượng toàn bộ robot khi lắp hoàn chỉnh **m = 3,25 kg** (trọng lượng tổng **P = m × g = 3,25 × 9,81 = 31,88 N**).  
+Độ nổi dự trữ **R_b** của robot:
+* **R_b = [(F_(A,total) - P) / F_(A,total)] × 100% = [(124,8 - 31,88) / 124,8] × 100% ≈ 74,45%**
 
 Tỉ lệ nổi dự trữ cao (~74,5%) giữ mớn nước tĩnh (Draft) ở mức 45 mm (25% chiều cao phao), giúp bo mạch điều khiển và pin luôn khô ráo và cách xa mặt nước 150 mm.
 
@@ -93,14 +94,39 @@ Tỉ lệ nổi dự trữ cao (~74,5%) giữ mớn nước tĩnh (Draft) ở m�
 ## 3. THUẬT TOÁN ĐIỀU KHIỂN VÀ PHẦN MỀM
 
 ### 3.1. Thuật toán điều khiển lực đẩy vi phân
-Tín hiệu đọc từ Joystick tay điều khiển gồm Tốc độ ($\tau \in [-1000, 1000]$) và Hướng lái ($\sigma \in [-1000, 1000]$). Giá trị điều khiển động cơ trái ($u_L$) và phải ($u_R$):
-\[ u_L = sat(\tau + k \cdot \sigma), \quad u_R = sat(\tau - k \cdot \sigma) \quad (k = 0{,}7) \]
 
-Ánh xạ sang độ rộng xung PWM $T_{PWM}$ cho ESC một chiều (50 Hz):
-\[ T_{PWM} = 1000 + u \quad (\mu s) \quad \text{với } u \in [0, 1000] \]
+Tín hiệu đọc từ Joystick tay điều khiển gồm:
+* **Biến Tốc độ (Throttle):** `τ ∈ [-1000, 1000]`
+* **Biến Hướng lái (Steering):** `σ ∈ [-1000, 1000]`
+
+Tín hiệu điều khiển cơ sở cho động cơ trái (`u_L`) và động cơ phải (`u_R`) được tính toán theo công thức:
+
+```text
+u_L = sat(τ + k × σ)
+u_R = sat(τ - k × σ)
+```
+
+*(Trong đó `k = 0,7` là hệ số nhạy hướng lái, và hàm bão hòa `sat(x)` giới hạn giá trị trong khoảng `[0, 1000]`)*.
+
+#### Ánh xạ sang độ rộng xung PWM cho ESC một chiều (50 Hz):
+Bộ điều tốc ESC tiếp nhận tín hiệu xung PWM chuẩn từ `1000 µs` (0% ga - dừng động cơ) đến `2000 µs` (100% ga - quay cực đại). Giá trị `u ∈ [0, 1000]` được ánh xạ sang độ rộng xung `T_PWM` theo công thức:
+
+```text
+T_PWM = 1000 + u  (đơn vị: microseconds - µs)
+```
+
+* Khi **u = 0**: `T_PWM = 1000 µs` (Động cơ ở trạng thái dừng).
+* Khi **u = 1000**: `T_PWM = 2000 µs` (Động cơ quay với 100% công suất tối đa).
+
+---
 
 ### 3.2. Cơ chế An toàn Failsafe tự động
-Chương trình trên ESP32 chạy chu kỳ vòng lặp 20 ms (50 Hz). Tích hợp bộ đếm thời gian an toàn **Failsafe**: Nếu sau $500\text{ ms}$ liên tục rớt sóng nRF24L01+, ESP32 tự động ngắt xung ga về $1000\ \mu s$ (dừng động cơ hoàn toàn), tránh sự cố robot trôi dạt mất kiểm soát.
+
+Chương trình điều khiển trên ESP32 chạy chu kỳ lấy mẫu `T_loop = 20 ms` (tần số 50 Hz) để đồng bộ hoàn toàn với tín hiệu PWM của ESC.
+
+Tích hợp bộ đếm thời gian an toàn **Failsafe**:
+* Nếu sau **500 ms** liên tục mà ESP32 phía Robot (RX) rớt sóng hoặc không nhận được gói tin hợp lệ từ Tay điều khiển (TX), hệ thống sẽ tự động ngắt xung ga về mức an toàn `T_PWM = 1000 µs` (dừng 2 động cơ lập tức).
+* Cơ chế này giúp ngăn ngừa sự cố robot chạy mất kiểm soát khi vượt quá cự ly truyền thông hoặc bị nhiễu sóng.
 
 ---
 
@@ -110,15 +136,15 @@ Chương trình trên ESP32 chạy chu kỳ vòng lặp 20 ms (50 Hz). Tích h�
 
 | STT | Thông số đo đạc | Giá trị thực đo | Phương pháp / Thiết bị kiểm chứng |
 | :--- | :--- | :--- | :--- |
-| 1 | Kích thước tổng thể | $1000 \times 450 \times 250\text{ mm}$ | Đo bằng thước kẹp & thước dây chuẩn |
-| 2 | Khối lượng toàn bộ robot | $3{,}25\text{ kg}$ | Cân điện tử độ chính xác $\pm 5\text{ g}$ |
-| 3 | Mớn nước tĩnh (Draft) | $45\text{ mm}$ | Đo mực nước thực tế trên thân phao PVC |
-| 4 | Tốc độ di chuyển tối đa | $1{,}8\text{ m/s}$ (~6,5 km/h) | Đo bằng module GPS Neo-6M trên đường chạy 50 m |
-| 5 | Cự ly điều khiển tối đa (LOS) | $165\text{ m}$ | Thử nghiệm hồ tĩnh, tỉ lệ rớt gói tin $< 3\%$ |
-| 6 | Độ trễ phản hồi lệnh điều khiển | $35 \pm 5\text{ ms}$ | Ghi nhận timestamp Serial ngắt thu/phát |
-| 7 | Thời gian tự ngắt Failsafe | $500\text{ ms}$ | Thử nghiệm ngắt nguồn tay điều khiển TX khi robot chạy |
-| 8 | Thời gian hoạt động liên tục | $28{,}5\text{ phút}$ | Thử nghiệm xả pin LiPo 4S từ 16,8V xuống 14,0V |
-| 9 | Lực kéo phao cứu sinh | $2{,}5\text{ kgf}$ (~24,5 N) | Đo bằng lực kế lò xo khi kéo phao tròn |
+| 1 | Kích thước tổng thể | **1000 × 450 × 250 mm** | Đo bằng thước kẹp & thước dây chuẩn |
+| 2 | Khối lượng toàn bộ robot | **3,25 kg** | Cân điện tử độ chính xác ±5 g |
+| 3 | Mớn nước tĩnh (Draft) | **45 mm** (25% đường kính phao) | Đo mực nước thực tế trên thân phao PVC |
+| 4 | Tốc độ di chuyển tối đa | **1,8 m/s** (~6,5 km/h) | Đo bằng module GPS Neo-6M trên đường chạy 50 m |
+| 5 | Cự ly điều khiển tối đa (LOS) | **165 m** | Thử nghiệm hồ tĩnh, tỉ lệ rớt gói tin < 3% |
+| 6 | Độ trễ phản hồi lệnh điều khiển | **35 ± 5 ms** | Ghi nhận timestamp Serial ngắt thu/phát |
+| 7 | Thời gian tự ngắt Failsafe | **500 ms** | Thử nghiệm ngắt nguồn tay điều khiển TX khi robot chạy |
+| 8 | Thời gian hoạt động liên tục | **28,5 phút** | Thử nghiệm xả pin LiPo 4S từ 16,8V xuống 14,0V |
+| 9 | Lực kéo phao cứu sinh | **2,5 kgf** (~24,5 N) | Đo bằng lực kế lò xo khi kéo phao tròn |
 
 ---
 
