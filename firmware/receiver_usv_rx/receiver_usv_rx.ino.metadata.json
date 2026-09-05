@@ -1,0 +1,5 @@
+{
+  "summary": "Mã nguồn Firmware hoàn chỉnh cho ESP32 phía Robot USV (Receiver RX) với điều khiển động cơ vi phân PWM 50Hz và Failsafe 500ms.",
+  "updatedAt": "2026-09-05T07:16:23.503393800Z",
+  "userFacing": true
+}

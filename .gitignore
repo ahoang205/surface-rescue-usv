@@ -1,0 +1,26 @@
+# --- Arduino & PlatformIO Build Directories ---
+.pio/
+.pioenvs/
+.piolibdeps/
+.clang_complete
+.gcc-flags.json
+build/
+bin/
+*.hex
+*.elf
+*.bin
+
+# --- IDE Files ---
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# --- Temporary Files ---
+~$*.docx
+~$*.pptx
+~$*.xlsx
+*.tmp
+*.log
