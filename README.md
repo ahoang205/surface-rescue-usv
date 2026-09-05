@@ -178,12 +178,19 @@ surface-rescue-usv/
 │       └── receiver_usv_rx.ino
 │
 ├── 📁 hardware/                                         # 📐 THIẾT KẾ PHẦN CỨNG & KẾT CẤU CƠ KHÍ
-│   ├── schematics/                                   # Sơ đồ nối chân GPIO & dây điện
-│   │   └── wiring_guide.md
+│   ├── receiver_board_rx/                            # Thiết kế bo mạch thu sóng Robot (STEP, PDF, BOM, ProPrj)
+│   │   ├── SCH_Schematic1_2026-09-05.pdf
+│   │   ├── PCB_PCB1_2026-09-05.pdf
+│   │   ├── BOM_Board1_Schematic1_2026-09-05.xlsx
+│   │   ├── 3D_PCB1_2026-09-05.step
+│   │   ├── ProPrj_Mach_thu__2026-09-05.epro2
+│   │   └── pcb3d.png
+│   ├── transmitter_board_tx/                         # Thiết kế bo mạch tay điều khiển Remote (PDF)
+│   │   └── Schematic_Remove_2026-09-05.pdf
 │   ├── mechanical_cad/                               # Thông số kết cấu phao PVC Catamaran
 │   │   └── pvc_pontoon_specs.md
-│   ├── mạch thu sóng/                                # File thiết kế mạch PCB thu sóng (STEP, PDF, BOM)
-│   └── tay điều khiển/                               # Sơ đồ mạch tay điều khiển (PDF)
+│   └── wiring_diagrams/                              # Sơ đồ nối chân GPIO & dây điện
+│       └── wiring_guide.md
 │
 └── 📁 docs/                                             # 📚 TÀI LIỆU KIẾN TRÚC HỆ THỐNG
     └── system_architecture.md
