@@ -177,19 +177,21 @@ surface-rescue-usv/
 │   └── receiver_usv_rx/                              # Firmware Robot USV RX (PWM 50Hz + Failsafe)
 │       └── receiver_usv_rx.ino
 │
-├── 📁 hardware/                                         # 📐 THIẾT KẾ PHẦN CỨNG & KẾT CẤU CƠ KHÍ
-│   ├── receiver_board_rx/                            # Thiết kế bo mạch thu sóng Robot (STEP, PDF, BOM, ProPrj)
-│   │   ├── SCH_Schematic1_2026-09-05.pdf
+├── 📁 hardware/                                         # 📐 THIẾT KẾ PHẦN CỨNG BẰNG LOẠI FILE
+│   ├── 📁 schematics/                                # Sơ đồ nguyên lý (PDF)
+│   │   ├── SCH_Schematic1_2026-09-05.pdf             # Sơ đồ mạch thu sóng Robot
+│   │   └── Schematic_Remove_2026-09-05.pdf           # Sơ đồ mạch tay điều khiển
+│   ├── 📁 pcb_layout/                                # Bản vẽ mạch in & Mô hình 3D PCB
 │   │   ├── PCB_PCB1_2026-09-05.pdf
-│   │   ├── BOM_Board1_Schematic1_2026-09-05.xlsx
 │   │   ├── 3D_PCB1_2026-09-05.step
-│   │   ├── ProPrj_Mach_thu__2026-09-05.epro2
 │   │   └── pcb3d.png
-│   ├── transmitter_board_tx/                         # Thiết kế bo mạch tay điều khiển Remote (PDF)
-│   │   └── Schematic_Remove_2026-09-05.pdf
-│   ├── mechanical_cad/                               # Thông số kết cấu phao PVC Catamaran
+│   ├── 📁 bom/                                       # Bảng kê thống kê linh kiện BOM (Excel)
+│   │   └── BOM_Board1_Schematic1_2026-09-05.xlsx
+│   ├── 📁 source_projects/                           # File dự án thiết kế mạch gốc
+│   │   └── ProPrj_Mach_thu__2026-09-05.epro2
+│   ├── 📁 mechanical_cad/                            # Thông số kết cấu phao PVC Catamaran
 │   │   └── pvc_pontoon_specs.md
-│   └── wiring_diagrams/                              # Sơ đồ nối chân GPIO & dây điện
+│   └── 📁 wiring_diagrams/                           # Sơ đồ nối chân GPIO & dây điện
 │       └── wiring_guide.md
 │
 └── 📁 docs/                                             # 📚 TÀI LIỆU KIẾN TRÚC HỆ THỐNG
